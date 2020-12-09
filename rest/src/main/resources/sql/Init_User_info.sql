@@ -1,0 +1,6 @@
+CREATE TABLE [dbo].[USER_INFO](
+	[NAME] [nchar](10) NULL,
+	[USER_NAME] [nchar](10) NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL
+) ON [PRIMARY]
+GO
