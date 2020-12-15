@@ -11,9 +11,6 @@
         <key>com.tdt.service.UserInfoService</key>
         <type>com.tdt.service.impl.UserInfoServiceImpl</type>
     </component>
-
-
-
     <component>
         <type>com.tdt.rest.UserController</type>
     </component>

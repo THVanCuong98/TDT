@@ -25,6 +25,8 @@ import org.exoplatform.services.security.IdentityRegistry;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
+
 /**
  * Rest User Service!
  */
@@ -40,6 +42,13 @@ public class UserController implements ResourceContainer {
     @RolesAllowed({"administrators"})
     public UserInfo hello(@PathParam("id") int id) {
         return userInfoService.loadUserInfo(id);
+    }
+
+    @GET
+    @Path("/users")
+    @RolesAllowed({"administrators"})
+    public List<UserInfo> getAll() {
+        return userInfoService.findAll();
     }
 
     @POST

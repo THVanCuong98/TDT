@@ -6,6 +6,7 @@ import com.tdt.service.UserInfoService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 @Singleton
 public class UserInfoServiceImpl implements UserInfoService {
@@ -16,6 +17,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo loadUserInfo(int id) {
         return userInfoDAO.find(id);
+    }
+
+    @Override
+    public List<UserInfo> findAll() {
+        return userInfoDAO.findAll();
     }
 
     @Override
