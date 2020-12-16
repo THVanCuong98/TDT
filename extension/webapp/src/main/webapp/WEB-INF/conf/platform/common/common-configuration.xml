@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    Copyright (C) 2009 eXo Platform SAS.
+    
+    This is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 2.1 of
+    the License, or (at your option) any later version.
+    
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this software; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+-->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+  xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+  <component>
+    <key>org.exoplatform.services.transaction.TransactionService</key>
+    <type>org.exoplatform.services.transaction.infinispan.JBossTransactionsService</type>
+    <init-params>
+      <value-param>
+        <name>timeout</name>
+        <value>${gatein.jcr.transaction.timeout:420}</value>
+      </value-param>
+    </init-params>
+  </component>
+
+  <component>
+    <type>org.exoplatform.services.scheduler.QueueTasks</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.services.scheduler.JobSchedulerService</key>
+    <type>org.exoplatform.services.scheduler.impl.JobSchedulerServiceImpl</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.services.scheduler.impl.QuartzSheduler</key>
+    <type>org.exoplatform.services.scheduler.impl.QuartzSheduler</type>
+    <init-params>
+      <!--Configure Main Scheduler Properties-->
+      <value-param>
+        <name>org.quartz.scheduler.instanceName</name>
+        <value>${exo.quartz.scheduler.instanceName}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.scheduler.instanceId</name>
+        <value>${exo.quartz.scheduler.instanceId}</value>
+      </value-param>
+      <!--Configure ThreadPool-->
+      <value-param>
+        <name>org.quartz.threadPool.class</name>
+        <value>${exo.quartz.threadPool.class}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.threadPool.threadPriority</name>
+        <value>${exo.quartz.threadPool.threadPriority}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.threadPool.threadCount</name>
+        <value>${exo.quartz.threadPool.threadCount}</value>
+      </value-param>
+      <!-- Configure JobStore-->
+      <value-param>
+        <name>org.quartz.jobStore.misfireThreshold</name>
+        <value>${exo.quartz.jobStore.misfireThreshold}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.class</name>
+        <value>${exo.quartz.jobStore.class}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.driverDelegateClass</name>
+        <value>${exo.quartz.jobStore.driverDelegateClass}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.useProperties</name>
+        <value>${exo.quartz.jobStore.useProperties}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.dataSource</name>
+        <value>${exo.quartz.jobStore.dataSource}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.tablePrefix</name>
+        <value>${exo.quartz.jobStore.tablePrefix}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.isClustered</name>
+        <value>false</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.maxMisfiresToHandleAtATime</name>
+        <value>${exo.quartz.jobStore.maxMisfiresToHandleAtATime}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.dontSetAutoCommitFalse</name>
+        <value>${exo.quartz.jobStore.dontSetAutoCommitFalse}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.lockHandler.class</name>
+        <value>${exo.quartz.jobStore.lockHandler.class}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.driverDelegateInitString</name>
+        <value>${exo.quartz.jobStore.driverDelegateInitString}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.txIsolationLevelSerializable</name>
+        <value>${exo.quartz.jobStore.txIsolationLevelSerializable}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.selectWithLockSQL</name>
+        <value>${exo.quartz.jobStore.selectWithLockSQL}</value>
+      </value-param>
+      <value-param>
+        <name>org.quartz.jobStore.acquireTriggersWithinLock</name>
+        <value>${exo.quartz.jobStore.acquireTriggersWithinLock}</value>
+      </value-param>
+      <value-param profiles="cluster">
+        <name>org.quartz.jobStore.isClustered</name>
+        <value>true</value>
+      </value-param>
+      <value-param profiles="cluster">
+        <name>org.quartz.jobStore.clusterCheckinInterval</name>
+        <value>${exo.quartz.jobStore.clusterCheckinInterval}</value>
+      </value-param>
+      <!-- Configure Datasources-->
+      <value-param>
+        <name>org.quartz.dataSource.quartzDS.jndiURL</name>
+        <value>${exo.quartz.dataSource.quartzDS.jndiURL}</value>
+      </value-param>
+    </init-params>
+  </component>
+  
+  <component>
+    <key>org.exoplatform.services.cache.ExoCacheFactory</key>
+    <type>org.exoplatform.services.cache.impl.infinispan.ExoCacheFactoryImpl</type>
+    <init-params>
+      <value-param>
+        <name>cache.config.template</name>
+        <value>${exo.cache.config.template:jar:/conf/platform/cache/infinispan/local/cache-config.xml}</value>
+      </value-param>
+      <value-param profiles="cluster">
+        <name>cache.config.template</name>
+        <value>${exo.cache.config.template:jar:/conf/platform/cache/infinispan/cluster/cache-config.xml}</value>
+      </value-param>
+      <value-param profiles="cluster">
+        <name>cache.async.config.template</name>
+        <value>${exo.cache.async.config.template:jar:/conf/platform/cache/infinispan/cluster/cache-async-config.xml}</value>
+      </value-param>
+    </init-params>
+  </component>
+  
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.resources.ResourceBundleService</target-component>
+    <component-plugin>
+      <name>portal templates ResourceBundle Plugin</name>
+      <set-method>addResourceBundle</set-method>
+      <type>org.exoplatform.services.resources.impl.BaseResourceBundlePlugin</type>
+      <init-params>
+         <values-param>
+            <name>init.resources</name>
+            <value>locale.portal.login</value>
+         </values-param>
+         <values-param>
+            <name>portal.resource.names</name>
+            <value>locale.portal.login</value>
+         </values-param>
+        <values-param>
+          <name>application.resource.bundle</name>
+          <value>locale.portal.templates</value>
+        </values-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+</configuration>

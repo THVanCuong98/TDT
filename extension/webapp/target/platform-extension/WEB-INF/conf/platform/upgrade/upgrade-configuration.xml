@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+   xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+
+	<component>
+		<type>org.exoplatform.commons.info.ProductInformations</type>
+		<init-params>
+			<value-param>
+				<name>product.versions.declaration.file</name>
+				<value>jar:/conf/platform.properties</value>
+			</value-param>
+		</init-params>
+	</component>
+
+   <external-component-plugins>
+      <target-component>org.exoplatform.commons.upgrade.UpgradeProductService</target-component>
+      <component-plugin>
+         <name>UpgradeProductInfoNodePlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeProductInfoNodePlugin</type>
+         <description>Remove any:read permission from node /Application Data/ProductInformationsService/productVersionDeclarationNode</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.3.1</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>UpgradeExoLoginHistoryHome</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeExoLoginHistoryHome</type>
+         <description>Remove any:read permission from node /exo:LoginHistoryHome</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.3.1</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>UpgradeNodeTypeSpaceAccessPlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeNodeTypeSpaceAccessPlugin</type>
+         <description>eXo NodeType SpaceAccess Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.0.0</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-SpacesHomepage</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeSpaceHomePagePlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.0.0</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-GroupSiteLayout</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeGroupSiteLayoutPlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>3</value>
+            </value-param>
+            <value-param>
+               <name>group.site.template.name</name>
+               <description>Template groupe site name</description>
+               <value>group</value>
+            </value-param>
+            <value-param>
+               <name>group.site.template.location</name>
+               <description>Location of group site template</description>
+               <value>war:/conf/office-extension/portal</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.0.0</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-UserSiteLayout</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeUserSiteLayoutPlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>3</value>
+            </value-param>
+            <value-param>
+               <name>user.site.template.name</name>
+               <description>Template groupe site name</description>
+               <value>user</value>
+            </value-param>
+            <value-param>
+               <name>user.site.template.location</name>
+               <description>Location of group site template</description>
+               <value>war:/conf/office-extension/portal</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.0.0</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+	      <name>PageUpgradePlugin</name>
+	      <set-method>addUpgradePlugin</set-method>
+	      <type>org.exoplatform.platform.upgrade.plugins.PageUpgradePlugin</type>
+	      <description>add dynamic containers to old pages</description>
+	      <init-params>
+	        <value-param>
+	          <name>product.group.id</name>
+	          <description>The groupId of the product</description>
+	          <value>org.exoplatform.platform</value>
+	        </value-param>
+	        <value-param>
+	          <name>plugin.execution.order</name>
+	          <description>The plugin execution order</description>
+	          <value>2</value>
+	        </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.1.0</value>
+            </value-param>
+	      </init-params>
+      </component-plugin>
+      
+      <component-plugin>
+	      <name>DisableUserUpgradePlugin</name>
+	      <set-method>addUpgradePlugin</set-method>
+	      <type>org.exoplatform.platform.upgrade.plugins.DisableUserUpgradePlugin</type>
+	      <description>upgrade disable user plugin</description>
+	      <init-params>
+	        <value-param>
+	          <name>product.group.id</name>
+	          <description>The groupId of the product</description>
+	          <value>org.exoplatform.platform</value>
+	        </value-param>
+	        <value-param>
+	          <name>plugin.execution.order</name>
+	          <description>The plugin execution order</description>
+	          <value>1</value>
+	        </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>plugin.upgrade.target.version</description>
+              <value>4.3.0</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+	        <value-param>
+	          <name>numberOfThreads</name>
+	          <description>number of execution threads</description>
+	          <value>${commons.upgrade.DisableUserUpgradePlugin.numberOfThreads:20}</value>
+	        </value-param>
+	        
+	        <value-param>
+	          <name>batchSize</name>
+	          <description>batch size</description>
+	          <value>${commons.upgrade.DisableUserUpgradePlugin.batchSize:100}</value>
+	        </value-param>
+	      </init-params>
+      </component-plugin>
+      
+      <component-plugin>
+        <name>AnswerPageUpgradePlugin</name>
+        <set-method>addUpgradePlugin</set-method>
+        <type>org.exoplatform.platform.upgrade.plugins.AnswerPageUpgradePlugin</type>
+        <description>remove Navigation portlet in answers and faq page</description>
+        <init-params>
+          <value-param>
+            <name>product.group.id</name>
+            <description>The groupId of the product</description>
+            <value>org.exoplatform.platform</value>
+          </value-param>
+          <value-param>
+            <name>plugin.execution.order</name>
+            <description>The plugin execution order</description>
+            <value>2</value>
+          </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.2.0</value>
+            </value-param>
+        </init-params>
+      </component-plugin> 
+      
+      <component-plugin>
+        <name>ProfilePageUpgradePlugin</name>
+        <set-method>addUpgradePlugin</set-method>
+        <type>org.exoplatform.platform.upgrade.plugins.ProfilePageUpgradePlugin</type>
+        <description>Removes old profile page and new one</description>
+        <init-params>
+          <value-param>
+            <name>product.group.id</name>
+            <description>The groupId of the product</description>
+            <value>org.exoplatform.platform</value>
+          </value-param>
+          <value-param>
+            <name>plugin.execution.order</name>
+            <description>The plugin execution order</description>
+            <value>2</value>
+          </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.0.1</value>
+            </value-param>
+        </init-params>
+      </component-plugin>      
+
+      <component-plugin>
+        <name>PCVPortletUpgradePlugin</name>
+        <set-method>addUpgradePlugin</set-method>
+        <type>org.exoplatform.platform.upgrade.plugins.PCVPortletUpgradePlugin</type>
+        <description>add dynamic containers to old pages</description>
+        <init-params>
+          <value-param>
+            <name>product.group.id</name>
+            <description>The groupId of the product</description>
+            <value>org.exoplatform.platform</value>
+          </value-param>
+          <value-param>
+            <name>plugin.execution.order</name>
+            <description>The plugin execution order</description>
+            <value>2</value>
+          </value-param>
+          <value-param>
+            <name>plugin.upgrade.execute.once</name>
+            <description>Execute this upgrade pluginonly once</description>
+            <value>true</value>
+          </value-param>
+          <value-param>
+            <name>plugin.upgrade.target.version</name>
+            <description>Target version of the plugin</description>
+            <value>4.1.0</value>
+          </value-param>
+        </init-params>
+      </component-plugin>      
+      
+      <component-plugin profiles="all">
+	      <name>UpgradeUserNotificationSettingPlugin</name>
+	      <set-method>addUpgradePlugin</set-method>
+	      <type>org.exoplatform.platform.upgrade.plugins.UpgradeUserNotificationSettingPlugin</type>
+	      <description>User Notification Setting Updater</description>
+	      <init-params>
+	        <value-param>
+	          <name>product.group.id</name>
+	          <description>The groupId of the product</description>
+	          <value>org.exoplatform.platform</value>
+	        </value-param>
+	        <value-param>
+	          <name>plugin.execution.order</name>
+	          <description>The plugin execution order</description>
+	          <value>2</value>
+	        </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.3.0</value>
+            </value-param>
+	      </init-params>
+	    </component-plugin>
+      <component-plugin profiles="all">
+	      <name>UpgradeNotifcationNodeTypePlugin</name>
+	      <set-method>addUpgradePlugin</set-method>
+	      <type>org.exoplatform.platform.upgrade.plugins.UpgradeNotifcationNodeTypePlugin</type>
+	      <description>User Notification Setting Updater</description>
+	      <init-params>
+	        <value-param>
+	          <name>product.group.id</name>
+	          <description>The groupId of the product</description>
+	          <value>org.exoplatform.platform</value>
+	        </value-param>
+	        <value-param>
+	          <name>plugin.execution.order</name>
+	          <description>The plugin execution order</description>
+	          <value>2</value>
+	        </value-param>
+            <value-param>
+              <name>plugin.upgrade.execute.once</name>
+              <description>Execute this upgrade pluginonly once</description>
+              <value>true</value>
+            </value-param>
+            <value-param>
+              <name>plugin.upgrade.target.version</name>
+              <description>Target version of the plugin</description>
+              <value>4.2.0</value>
+            </value-param>
+	      </init-params>
+	    </component-plugin>
+
+      <component-plugin>
+         <name>UpgradeSecureJCRFoldersPlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeSecureJCRFoldersPlugin</type>
+         <description>Secure JCR folders</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+             <value-param>
+                 <name>plugin.upgrade.execute.once</name>
+                 <description>Execute this upgrade pluginonly once</description>
+                 <value>true</value>
+             </value-param>
+             <value-param>
+                 <name>plugin.upgrade.target.version</name>
+                 <description>Target version of the plugin</description>
+                 <value>5.1.0</value>
+             </value-param>
+         </init-params>
+      </component-plugin>
+
+      <component-plugin>
+         <name>PLFSecureJCRFoldersUpgradePlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.PLFSecureJCRFoldersUpgradePlugin</type>
+         <description>Secure JCR folders</description>
+         <init-params>
+           <value-param>
+             <name>product.group.id</name>
+             <description>The groupId of the product</description>
+             <value>org.exoplatform.platform</value>
+           </value-param>
+           <value-param>
+             <name>plugin.execution.order</name>
+             <description>The plugin execution order</description>
+             <value>2</value>
+           </value-param>
+           <value-param>
+             <name>plugin.upgrade.execute.once</name>
+             <description>Execute this upgrade pluginonly once</description>
+             <value>true</value>
+           </value-param>
+           <value-param>
+             <name>plugin.upgrade.async.execution</name>
+             <description>Execute the upgrade plugin asynchronously</description>
+             <value>true</value>
+           </value-param>
+           <value-param>
+             <name>plugin.upgrade.target.version</name>
+             <description>Target version of the plugin</description>
+             <value>5.2.0</value>
+           </value-param>
+         </init-params>
+      </component-plugin>
+
+     <component-plugin>
+       <name>UpgradePortalDataPlugin</name>
+       <set-method>addUpgradePlugin</set-method>
+       <type>org.exoplatform.platform.upgrade.plugins.UpgradePortalDataPlugin</type>
+       <description>Upgrade Portal Data</description>
+       <init-params>
+         <value-param>
+           <name>product.group.id</name>
+           <description>The groupId of the product</description>
+           <value>org.exoplatform.platform</value>
+         </value-param>
+         <value-param>
+           <name>plugin.execution.order</name>
+           <description>The plugin execution order</description>
+           <value>2</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.execute.once</name>
+           <description>Execute this upgrade pluginonly once</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.async.execution</name>
+           <description>Execute the upgrade plugin asynchronously</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.target.version</name>
+           <description>Target version of the plugin</description>
+           <value>5.2.0</value>
+         </value-param>
+       </init-params>
+     </component-plugin>
+
+     <component-plugin>
+       <name>UpgradeMigrateGadgetToPortlet</name>
+       <set-method>addUpgradePlugin</set-method>
+       <type>org.exoplatform.platform.upgrade.plugins.UpgradeGadgetToPortletPlugin</type>
+       <description>Migrate gadget to portlet or drop the unsupported ones</description>
+       <init-params>
+         <value-param>
+           <name>product.group.id</name>
+           <description>The groupId of the product</description>
+           <value>org.exoplatform.platform</value>
+         </value-param>
+         <value-param>
+           <name>plugin.execution.order</name>
+           <description>The plugin execution order</description>
+           <value>3</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.execute.once</name>
+           <description>Execute this upgrade plugin only once</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.async.execution</name>
+           <description>Execute the upgrade plugin asynchronously</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.target.version</name>
+           <description>Target version of the plugin</description>
+           <value>5.3.0</value>
+         </value-param>
+       </init-params>
+     </component-plugin>
+     <component-plugin>
+       <name>UpgradeRemoveGadgetPlugin</name>
+       <set-method>addUpgradePlugin</set-method>
+       <type>org.exoplatform.platform.upgrade.plugins.UpgradeRemoveGadgetPlugin</type>
+       <description>Drop gadget support</description>
+       <init-params>
+         <value-param>
+           <name>product.group.id</name>
+           <description>The groupId of the product</description>
+           <value>org.exoplatform.platform</value>
+         </value-param>
+         <value-param>
+           <name>plugin.execution.order</name>
+           <description>The plugin execution order</description>
+           <value>5</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.execute.once</name>
+           <description>Execute this upgrade plugin only once</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.async.execution</name>
+           <description>Execute the upgrade plugin asynchronously</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.target.version</name>
+           <description>Target version of the plugin</description>
+           <value>5.3.0</value>
+         </value-param>
+       </init-params>
+     </component-plugin>
+     <component-plugin>
+       <name>UpgradeRemoveUserPagesPlugin</name>
+       <set-method>addUpgradePlugin</set-method>
+       <type>org.exoplatform.platform.upgrade.plugins.UpgradeUserPortalPlugin</type>
+       <description>Drop user pages and navigations</description>
+       <init-params>
+         <value-param>
+           <name>product.group.id</name>
+           <description>The groupId of the product</description>
+           <value>org.exoplatform.platform</value>
+         </value-param>
+         <value-param>
+           <name>plugin.execution.order</name>
+           <description>The plugin execution order</description>
+           <value>4</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.execute.once</name>
+           <description>Execute this upgrade plugin only once</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.async.execution</name>
+           <description>Execute the upgrade plugin asynchronously</description>
+           <value>true</value>
+         </value-param>
+         <value-param>
+           <name>plugin.upgrade.target.version</name>
+           <description>Target version of the plugin</description>
+           <value>5.3.0</value>
+         </value-param>
+       </init-params>
+     </component-plugin>
+     <component-plugin>
+       <name>ResumeDigestJobUpgradePlugin</name>
+       <set-method>addUpgradePlugin</set-method>
+       <type>org.exoplatform.platform.upgrade.plugins.ResumeDigestJobUpgradePlugin</type>
+       <description>Resume the digest notification jobs daily and weekly (deactivated by mail notification migration)</description>
+       <init-params>
+           <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+           </value-param>
+           <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+           </value-param>
+           <value-param>
+               <name>plugin.upgrade.execute.once</name>
+               <description>Execute this upgrade pluginonly once</description>
+               <value>true</value>
+           </value-param>
+           <value-param>
+               <name>plugin.upgrade.target.version</name>
+               <description>Target version of the plugin</description>
+               <value>6.0.0</value>
+           </value-param>
+           <value-param>
+               <name>plugin.upgrade.async.execution</name>
+               <description>Execute the upgrade plugin asynchronously</description>
+               <value>true</value>
+            </value-param>
+       </init-params>
+     </component-plugin>
+   </external-component-plugins>
+</configuration>
